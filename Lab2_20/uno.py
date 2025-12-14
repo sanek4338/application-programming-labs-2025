@@ -50,9 +50,6 @@ class TransportAudioManager:
                         file_info['absolute_path'],
                         file_info['relative_path']
                     ])
-
-            print(f"Аннотация создана: {self.annotation_file}")
-            print(f"Записано файлов: {len(files_info)}")
             return True
 
         except Exception as e:
@@ -86,7 +83,7 @@ class TransportAudioManager:
 
 
 def parse_arguments():
-    """Парсит аргументы командной строки."""
+    """Парсим аргументы командной строки."""
     parser = argparse.ArgumentParser(
         description='Скачивание звуков транспорта с сайта mixkit.co с созданием аннотации'
     )
@@ -142,17 +139,14 @@ def main() -> None:
         if downloaded_count >= 50:  # Минимум 50 файлов
             if audio_manager.create_annotation():
                 audio_manager.demonstrate_iterator()
-                print(f"\n Программа успешно завершена!")
                 print(f"Скачано звуков транспорта: {downloaded_count}")
             else:
-                print(" Не удалось создать аннотацию")
                 sys.exit(1)
         else:
             print(f" Скачано недостаточно файлов: {downloaded_count} (требуется минимум 50)")
             sys.exit(1)
 
     except KeyboardInterrupt:
-        print("\nПрограмма прервана пользователем")
         sys.exit(1)
     except Exception as e:
         print(f" Критическая ошибка: {e}")

@@ -18,7 +18,7 @@ class AudioDownloader:
     def __init__(self, download_dir: str):
         """Инициализация загрузчика с указанием директории для сохранения."""
         self.download_dir = download_dir
-        self.session = requests.Session()
+        self.session = requests.Session() #для сохранения куки и всего такого
         self.session.headers.update({
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
@@ -32,7 +32,7 @@ class AudioDownloader:
         """Скачиваем указанное количество звуков транспорта."""
         print(f"Поиск звуков транспорта...")
 
-        # Основные категории транспорта на Mixkit
+        # Основные категории транспорта на mixkit
         transport_categories = [
             "car", "vehicle", "transport", "traffic", "motor",
             "engine", "horn", "siren", "ambulance", "fire-truck",
@@ -47,7 +47,7 @@ class AudioDownloader:
             if total_downloaded >= count:
                 break
                 
-            remaining = count - total_downloaded
+            remaining = count - total_downloaded #вот это я счтаю гениальным
             url = f"https://mixkit.co/free-sound-effects/{category}/"
             
             print(f"Поиск в категории: {category}")

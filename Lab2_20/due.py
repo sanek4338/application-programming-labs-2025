@@ -18,7 +18,7 @@ class AudioIterator:
         self._load_paths()
 
     def _load_paths(self) -> None:
-        """Загружает пути к файлам из указанного источника."""
+        """Загружаем пути к файлам из указанного источника."""
         if os.path.isfile(self.source) and self.source.endswith('.csv'):
             self._load_paths_from_csv()
         elif os.path.isdir(self.source):
@@ -27,7 +27,7 @@ class AudioIterator:
             raise ValueError("Источник должен быть CSV файлом или директорией")
 
     def _load_paths_from_csv(self) -> None:
-        """Загружает пути из CSV файла аннотации."""
+        """Загружаем пути из CSV файла аннотации."""
         try:
             with open(self.source, 'r', encoding='utf-8') as file:
                 reader = csv.DictReader(file)
@@ -46,7 +46,7 @@ class AudioIterator:
             raise Exception(f"Ошибка чтения CSV файла: {e}")
 
     def _load_paths_from_directory(self) -> None:
-        """Загружает пути из директории с файлами."""
+        """Загружаем пути из директории с файлами."""
         if not os.path.exists(self.source):
             raise FileNotFoundError(f"Директория не найдена: {self.source}")
 
@@ -62,12 +62,12 @@ class AudioIterator:
             raise Exception(f"Ошибка чтения директории: {e}")
 
     def __iter__(self) -> Iterator[str]:
-        """Возвращает итератор для перебора файлов."""
+        """Возвращаем итератор для перебора файлов."""
         self._index = 0
         return self
 
     def __next__(self) -> str:
-        """Возвращает следующий путь к файлу."""
+        """Возвращаем следующий путь к файлу."""
         if self._index < len(self._paths):
             path = self._paths[self._index]
             self._index += 1
@@ -75,11 +75,11 @@ class AudioIterator:
         raise StopIteration
 
     def __len__(self) -> int:
-        """Возвращает количество файлов."""
+        """Возвращаем количество файлов."""
         return len(self._paths)
 
     def get_file_info(self, file_path: str) -> dict:
-        """Возвращает информацию о файле."""
+        """Возвращаем информацию о файле."""
         try:
             return {
                 'filename': os.path.basename(file_path),

@@ -152,3 +152,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    #python D:\application-programming-labs-2025\Lab3_20\uno.py --csv_annotation D:\application-programming-labs-2025\annotation.csv

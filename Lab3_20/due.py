@@ -173,7 +173,7 @@ class AudioProcessor:
             stats = info['stats']
             print(f"  Амплитуда: {stats['min']:.0f} / {stats['max']:.0f} (мин/макс)")
         else:
-            print(f"❌ Ошибка чтения: {file_path}")
+            print(f"Ошибка чтения: {file_path}")
     
     def find_audio_file(self, audio_files: List[str], filename: str) -> str:
         for file_path in audio_files:
