@@ -241,7 +241,6 @@ class MainWindow(QMainWindow):
         main_layout.setSpacing(20)
         central_widget.setLayout(main_layout)
         
-        # Заголовок приложения
         header_label = QLabel("Слушать музыку скачать онлайн без вирусов")
         header_label.setFont(QFont("Segoe UI", 24, QFont.Bold))
         header_label.setStyleSheet("""
@@ -730,7 +729,6 @@ def main():
         }
     """)
     
-    # Установка шрифта по умолчанию
     font = QFont("Segoe UI", 10)
     app.setFont(font)
     
